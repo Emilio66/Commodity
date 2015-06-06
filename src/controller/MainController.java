@@ -53,7 +53,7 @@ public class MainController extends Controller {
 			setAttr("user",user);
 		
 		String sql ="select * from commodity";
-		String aim = getPara("name");
+		String aim = getPara("search");
 		if(aim != null){
 			sql += " where name like '%"+aim+"%'";
 		}

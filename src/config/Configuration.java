@@ -1,5 +1,6 @@
 package config;
 
+import model.Cart;
 import model.Category;
 import model.Commodity;
 import model.Order;
@@ -29,7 +30,7 @@ public class Configuration extends JFinalConfig {
 
 	@Override
 	public void configConstant(Constants config) {
-		config.setDevMode(true);
+		config.setDevMode(false);
 		config.setViewType(ViewType.FREE_MARKER);
 	}
 
@@ -44,8 +45,9 @@ public class Configuration extends JFinalConfig {
 		
 		arPlugin.addMapping("user", User.class);
 		arPlugin.addMapping("order","sequence",Order.class);
-		arPlugin.addMapping("commodity","cate_id",Commodity.class);
-		arPlugin.addMapping("category",Category.class);
+		arPlugin.addMapping("commodity",Commodity.class);
+		arPlugin.addMapping("category","cate_id",Category.class);
+		arPlugin.addMapping("cart",Cart.class);
 	}
 
 	@Override

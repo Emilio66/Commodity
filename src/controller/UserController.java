@@ -26,6 +26,11 @@ public class UserController extends Controller {
 		}
 	}
 	
+	public void out(){
+		setSessionAttr("user",null);
+		forwardAction("/");
+	}
+	
 	public void register(){
 		String account = getPara("account");
 		if(account == null){

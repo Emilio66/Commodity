@@ -47,7 +47,12 @@ public class CartController extends Controller {
 			cart.set("quantity",quantity);
 			cart.set("sum",sum);
 			cart.set("time",new Timestamp(time));
-			cart.save();
+			if(cart.save()){
+				setAttr("msg","添加成功！");
+				render("success.html");
+			}else{
+				renderText("添加失败！");
+			}
 		}
 	}
 	
@@ -61,7 +66,14 @@ public class CartController extends Controller {
 	public void payAll(){
 		User user = getSessionAttr("user");
 		int id = user.getInt("id");
-		List<Cart> carts = Cart.dao.find("select * from cart where user_id="+id);
+		List<Cart> carts =new ArrayList<Cart>(); //Cart.dao.find("select * from cart where user_id="+id);
+		//get selected goods in cart
+		String[] items = getParaMap().get("selected");	
+		System.out.println(items);
+		for (String cartID : items) {
+			carts.add(Cart.dao.findById(Integer.parseInt(cartID)));
+		}
+		
 		List<String> seqList = new ArrayList<String>();
 
 		for (int i = 0; i < carts.size(); i++) {

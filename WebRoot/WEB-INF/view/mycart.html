@@ -45,20 +45,54 @@
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    <script type="text/javascript">
+    	var sum=0;
+    	$(document).ready(function(){
+    		$("#selectAll").click(function(){
+    			if($("#selectAll").attr("checked")== "checked"){
+    				sum=0;
+    				//add each items' cost
+    				$(".checkBox").each(function(){
+    					$(this).attr("checked","checked");
+    					var id="#"+$(this).val();
+        				sum+= parseFloat($(id).text());
+    				});
+    			}
+    			else{
+    				$(".checkBox").attr("checked",false);
+    				sum=0;
+    			}
+    			$("#total").text(sum);
+    		});
+    		
+    		//add selected 
+    		$(".checkBox").click(function(){
+    			if($(this).attr("checked") == "checked"){
+    				$(this).attr("name","selected");
+    				var id="#"+$(this).val();
+    				//calculate the total cost
+    				sum+= parseFloat($(id).text());
+    				$("#total").text(sum);
+    			}else{
+    				$(this).attr("name","");
+    				sum-= parseFloat($(id).text());
+    				$("#total").text(sum);
+    			}
+    		});
+    	});
+    </script>
   </head>
   <body>
     <div id="base" class="">
-
       <!-- Unnamed (Shape) -->
       <div id="u0" class="ax_h1">
         <img id="u0_img" class="img " src="/resources/images/transparent.gif"/>
-        <!-- Unnamed () -->
+        
         <div id="u1" class="text">
-          <p><a id="u2" class="link"><span>大连理工大学校园电子商务系统</span></a></p>
+          <p><a id="u2" class="link" href="/"><span>大连理工大学校园电子商务系统</span></a></p>
         </div>
       </div>
 
-      <!-- Unnamed (Shape) -->
       <div id="u3" class="ax_shape">
         <img id="u3_img" class="img " src="/images/home/u3.png"/>
         <!-- Unnamed () -->
@@ -66,320 +100,6 @@
           <p><span>校</span><span>园购物优选</span></p>
         </div>
       </div>
-
-      <!-- Unnamed (Table) -->
-      <div id="u5" class="ax_table">
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u6" class="ax_table_cell">
-          <img id="u6_img" class="img " src="/images/mycart/u6.png"/>
-          <!-- Unnamed () -->
-          <div id="u7" class="text">
-            <p><span>加</span><span>入收藏</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u8" class="ax_table_cell">
-          <img id="u8_img" class="img " src="/images/mycart/u8.png"/>
-          <!-- Unnamed () -->
-          <div id="u9" class="text">
-            <p><a id="u10" class="link"><span>我要卖东西</span></a></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u11" class="ax_table_cell">
-          <img id="u11_img" class="img " src="/images/mycart/u11.png"/>
-          <!-- Unnamed () -->
-          <div id="u12" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u13" class="ax_table_cell">
-          <img id="u13_img" class="img " src="/images/mycart/u13.png"/>
-          <!-- Unnamed () -->
-          <div id="u14" class="text">
-            <p><span>我的订单</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u15" class="ax_table_cell">
-          <img id="u15_img" class="img " src="/images/mycart/u15.png"/>
-          <!-- Unnamed () -->
-          <div id="u16" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u17" class="ax_table_cell">
-          <img id="u17_img" class="img " src="/images/mycart/u17.png"/>
-          <!-- Unnamed () -->
-          <div id="u18" class="text">
-            <p><span>注</span><span>册</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u19" class="ax_table_cell">
-          <img id="u19_img" class="img " src="/images/mycart/u19.png"/>
-          <!-- Unnamed () -->
-          <div id="u20" class="text">
-            <p><span>查</span><span>看购物车</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u21" class="ax_shape">
-        <img id="u21_img" class="img " src="/images/home/u26.png"/>
-        <!-- Unnamed () -->
-        <div id="u22" class="text">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u23" class="ax_shape">
-        <img id="u23_img" class="img " src="/images/home/u28.png"/>
-        <!-- Unnamed () -->
-        <div id="u24" class="text">
-          <p><span>搜</span><span>索</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Table) -->
-      <div id="u25" class="ax_table">
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u26" class="ax_table_cell">
-          <img id="u26_img" class="img " src="/images/home/u31.png"/>
-          <!-- Unnamed () -->
-          <div id="u27" class="text">
-            <p><span></span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u28" class="ax_table_cell">
-          <img id="u28_img" class="img " src="/images/home/u31.png"/>
-          <!-- Unnamed () -->
-          <div id="u29" class="text">
-            <p><span>热销商品</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u30" class="ax_table_cell">
-          <img id="u30_img" class="img " src="/images/home/u35.png"/>
-          <!-- Unnamed () -->
-          <div id="u31" class="text">
-            <p><span>最新活动</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u32" class="ax_table_cell">
-          <img id="u32_img" class="img " src="/images/home/u35.png"/>
-          <!-- Unnamed () -->
-          <div id="u33" class="text">
-            <p><span>校</span><span>园优惠</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u34" class="ax_table_cell">
-          <img id="u34_img" class="img " src="/images/home/u39.png"/>
-          <!-- Unnamed () -->
-          <div id="u35" class="text">
-            <p><span>联</span><span>系店铺</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unnamed (Image) -->
-      <div id="u36" class="ax_image">
-        <img id="u36_img" class="img " src="/images/home/u41.png"/>
-        <!-- Unnamed () -->
-        <div id="u37" class="text">
-          <p><span></span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u38" class="ax_flow_shape">
-        <img id="u38_img" class="img " src="/images/mycart/u38.png"/>
-        <!-- Unnamed () -->
-        <div id="u39" class="text">
-          <p><span>login</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
-      <div id="u38_ref" class="reference_page"></div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u40" class="ax_flow_shape">
-        <img id="u40_img" class="img " src="/images/mycart/u40.png"/>
-        <!-- Unnamed () -->
-        <div id="u41" class="text">
-          <p><span>register</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
-      <div id="u40_ref" class="reference_page"></div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u42" class="ax_flow_shape">
-        <img id="u42_img" class="img " src="/images/mycart/u42.png"/>
-        <!-- Unnamed () -->
-        <div id="u43" class="text">
-          <p><span>myCart</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
-      <div id="u42_ref" class="reference_page"></div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u44" class="ax_flow_shape">
-        <img id="u44_img" class="img " src="/images/mycart/u44.png"/>
-        <!-- Unnamed () -->
-        <div id="u45" class="text">
-          <p><span>orders</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
-      <div id="u44_ref" class="reference_page"></div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u46" class="ax_flow_shape">
-        <img id="u46_img" class="img " src="/images/mycart/u46.png"/>
-        <!-- Unnamed () -->
-        <div id="u47" class="text">
-          <p><span>favorites</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Text Field) -->
-      <div id="u48" class="ax_text_field">
-        <input id="u48_input" type="text" value=""/>
-      </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <div id="u49" class="ax_html_button">
-        <input id="u49_input" type="submit" value="搜索"/>
-      </div>
-
-      <!-- Unnamed (Tree) -->
-      <div id="u50" class="ax_tree_node treeroot">
-        <div id="u50_children" class="u50_children">
-
-          <!-- Unnamed (Tree Node) -->
-          <div id="u51" class="ax_tree_node treenode">
-
-            <!-- Unnamed (Image) -->
-            <div id="u52" class="ax_image">
-              <img id="u52_img" class="img " src="/images/home/u47.png"/>
-              <!-- Unnamed () -->
-              <div id="u53" class="text">
-                <p><span></span></p>
-              </div>
-            </div>
-            <!-- Unnamed (Shape) -->
-            <div id="u54" class="" selectiongroup="u50_tree_group">
-              <img id="u54_img" class="img " src="/resources/images/transparent.gif"/>
-              <!-- Unnamed () -->
-              <div id="u55" class="text">
-                <p><span>全部分类</span></p>
-              </div>
-            </div>
-            <div id="u51_children" class="u51_children" style="visibility:hidden;">
-
-              <!-- Unnamed (Tree Node) -->
-              <div id="u56" class="ax_tree_node treenode">
-                <!-- Unnamed (Shape) -->
-                <div id="u57" class="" selectiongroup="u50_tree_group">
-                  <img id="u57_img" class="img " src="/resources/images/transparent.gif"/>
-                  <!-- Unnamed () -->
-                  <div id="u58" class="text">
-                    <p><span>服</span><span>装</span></p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Unnamed (Tree Node) -->
-              <div id="u59" class="ax_tree_node treenode">
-                <!-- Unnamed (Shape) -->
-                <div id="u60" class="" selectiongroup="u50_tree_group">
-                  <img id="u60_img" class="img " src="/resources/images/transparent.gif"/>
-                  <!-- Unnamed () -->
-                  <div id="u61" class="text">
-                    <p><span>数</span><span>码</span></p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Unnamed (Tree Node) -->
-              <div id="u62" class="ax_tree_node treenode">
-                <!-- Unnamed (Shape) -->
-                <div id="u63" class="" selectiongroup="u50_tree_group">
-                  <img id="u63_img" class="img " src="/resources/images/transparent.gif"/>
-                  <!-- Unnamed () -->
-                  <div id="u64" class="text">
-                    <p><span>生</span><span>活用品</span></p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Unnamed (Tree Node) -->
-              <div id="u65" class="ax_tree_node treenode">
-                <!-- Unnamed (Shape) -->
-                <div id="u66" class="" selectiongroup="u50_tree_group">
-                  <img id="u66_img" class="img " src="/resources/images/transparent.gif"/>
-                  <!-- Unnamed () -->
-                  <div id="u67" class="text">
-                    <p><span>食</span><span>品</span></p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Unnamed (Tree Node) -->
-              <div id="u68" class="ax_tree_node treenode">
-                <!-- Unnamed (Shape) -->
-                <div id="u69" class="" selectiongroup="u50_tree_group">
-                  <img id="u69_img" class="img " src="/resources/images/transparent.gif"/>
-                  <!-- Unnamed () -->
-                  <div id="u70" class="text">
-                    <p><span>书</span><span>籍</span></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Unnamed (Shape) -->
-      <div id="u71" class="ax_shape">
-        <img id="u71_img" class="img " src="/images/mycart/u71.png"/>
-        <!-- Unnamed () -->
-        <div id="u72" class="text">
-          <p><span>购</span><span>物车</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Horizontal Line) -->
-      <div id="u73" class="ax_horizontal_line">
-        <img id="u73_start" class="img " src="/resources/images/transparent.gif" alt="u73_start"/>
-        <img id="u73_end" class="img " src="/resources/images/transparent.gif" alt="u73_end"/>
-        <img id="u73_line" class="img " src="/images/mycart/u73_line.png" alt="u73_line"/>
       </div>
 
       <!-- Unnamed (Shape) -->
@@ -387,184 +107,64 @@
         <img id="u74_img" class="img " src="/images/mycart/u74.png"/>
         <!-- Unnamed () -->
         <div id="u75" class="text">
-          <p><span>已选商品¥0.00</span></p>
+          <p><h3>已选商品&nbsp;¥<span id="total">0.00</span></h3></p>
         </div>
       </div>
-
-      <!-- Unnamed (HTML Button) -->
+	<form action="/c/payAll" method="post" id ="payForm">
       <div id="u76" class="ax_html_button">
         <input id="u76_input" type="submit" value="结算"/>
       </div>
-
-      <!-- Unnamed (Table) -->
-      <div id="u77" class="ax_table">
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u78" class="ax_table_cell">
-          <img id="u78_img" class="img " src="/images/mycart/u78.png"/>
-          <!-- Unnamed () -->
-          <div id="u79" class="text">
-            <p><span></span></p>
+	</form>
+<table border="1" id="u77">
+<tr>
+<td><input type="checkbox" id="selectAll"/>全选</td>
+<td>商品名称</td>
+<td>购买数量</td>
+<td>总价</td>
+<td>操作</td>
+</tr>     
+		<#if cart ??>
+		<#list cart as mycart>
+		<tr>
+		<td><input type="checkbox" value="${mycart.id}" name="selected" form="payForm" class="checkBox"/></td>
+		<td>
+        <div class="ax_table_cell">        
+          <div class="text">
+            <p><a href="/g/one?id=${(mycart.commodity_id)}"><span>${(mycart.getCommodity().name)}</span></a></p>
           </div>
         </div>
+		</td>
 
-        <!-- Unnamed (Table Cell) -->
-        <div id="u80" class="ax_table_cell">
-          <img id="u80_img" class="img " src="/images/mycart/u80.png"/>
-          <!-- Unnamed () -->
-          <div id="u81" class="text">
-            <p><span>商</span><span>品信息</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u82" class="ax_table_cell">
-          <img id="u82_img" class="img " src="/images/mycart/u82.png"/>
-          <!-- Unnamed () -->
-          <div id="u83" class="text">
-            <p><span>单</span><span>价（元）</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u84" class="ax_table_cell">
-          <img id="u84_img" class="img " src="/images/mycart/u84.png"/>
-          <!-- Unnamed () -->
-          <div id="u85" class="text">
-            <p><span>数量</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u86" class="ax_table_cell">
-          <img id="u86_img" class="img " src="/images/mycart/u86.png"/>
-          <!-- Unnamed () -->
-          <div id="u87" class="text">
-            <p><span>金</span><span>额（元）</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div id="u88" class="ax_table_cell">
-          <img id="u88_img" class="img " src="/images/mycart/u88.png"/>
-          <!-- Unnamed () -->
-          <div id="u89" class="text">
-            <p><span>操</span><span>作</span></p>
-          </div>
-        </div>
-		<#if mycart ??>
-		<#list mycart as order>
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u90_img" class="img " src="/images/mycart/u90.png"/>
-          <!-- Unnamed () -->
-          <div id="u91" class="text">
-            <img class="img " src="//images/${(order.image)}"/>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u92_img" class="img " src="/images/mycart/u92.png"/>
-          <!-- Unnamed () -->
-          <div id="u93" class="text">
-            <p><span>${(mycart.name)}</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u94_img" class="img " src="/images/mycart/u94.png"/>
-          <!-- Unnamed () -->
-          <div id="u95" class="text">
-            <p><span>${(mycart.price)}</span></p>
-          </div>
-        </div>
-
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u96_img" class="img " src="/images/mycart/u96.png"/>
-          <!-- Unnamed () -->
-          <div id="u97" class="text">
+		<td>		
             <p><span>${(mycart.quantity)}</span></p>
-          </div>
-        </div>
+        </td>
 
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u98_img" class="img " src="/images/mycart/u98.png"/>
-          <!-- Unnamed () -->
-          <div id="u99" class="text">
-            <p><span>${(mycart.sum)}</span></p>
-          </div>
-        </div>
+       <td>
+            <p><span id="${(mycart.id)}">${(mycart.sum)}</span></p>
+      </td>
 
-        <!-- Unnamed (Table Cell) -->
-        <div class="ax_table_cell">
-          <img id="u100_img" class="img " src="/images/mycart/u100.png"/>
-          <!-- Unnamed () -->
-          <div class="ax_table_cell">
-			<input type="button" name="${(mycart.id)}" value="删除"/>
-		  </div>
+      <td>
+         
+          <form action="/c/delete" method="post">
+         	 <input type="hidden" name="id" value="${(mycart.id)}"/>
+			 <input type="submit" value="删除"/>
+		 </form>
+	</td>
+		 <td>
 		  <div class="ax_table_cell">
-			<input type="button" name="${(mycart.id)}" value="付款"/>
+		  <form action="/c/buy" method="post">
+		  		<input type="hidden" name="id" value="${(mycart.id)}"/>
+		  		<input type="hidden" name="quantity" value="${(mycart.quantity)}"/>
+		  		<input type="hidden" name="sum" value="${(mycart.sum)}"/>
+		  		<input type="hidden" name="commodity_id" value="${(mycart.commodity_id)}"/>
+				<input type="submit" value="付款"/>
+		 </form>
 		  </div>
-        </div>
+        </td>
+        </tr>
 		</#list>
 		</#if>
 
-      <!-- Unnamed (Checkbox) -->
-      <div id="u114" class="ax_checkbox">
-        <label for="u114_input">
-          <!-- Unnamed () -->
-          <div id="u115" class="text">
-            <p><span>全</span><span>选</span></p>
-          </div>
-        </label>
-        <input id="u114_input" type="checkbox" value="checkbox"/>
-      </div>
-
-      <!-- Unnamed (Image) -->
-      <div id="u116" class="ax_image">
-        <img id="u116_img" class="img " src="/images/mycart/u116.png"/>
-        <!-- Unnamed () -->
-        <div id="u117" class="text">
-          <p><span></span></p>
         </div>
-      </div>
-
-      <!-- Unnamed (Checkbox) -->
-      <div id="u118" class="ax_checkbox">
-        <label for="u118_input">
-          <!-- Unnamed () -->
-          <div id="u119" class="text">
-            <p><span></span></p>
-          </div>
-        </label>
-        <input id="u118_input" type="checkbox" value="checkbox"/>
-      </div>
-
-      <!-- Unnamed (Checkbox) -->
-      <div id="u127" class="ax_checkbox">
-        <label for="u127_input">
-          <!-- Unnamed () -->
-          <div id="u128" class="text">
-            <p><span></span></p>
-          </div>
-        </label>
-        <input id="u127_input" type="checkbox" value="checkbox"/>
-      </div>
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u134" class="ax_flow_shape">
-        <img id="u134_img" class="img " src="/images/mycart/u134.png"/>
-        <!-- Unnamed () -->
-        <div id="u135" class="text">
-          <p><span>add</span></p>
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
-      <div id="u134_ref" class="reference_page"></div>
-    </div>
   </body>
 </html>

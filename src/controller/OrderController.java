@@ -24,13 +24,14 @@ public class OrderController extends Controller{
 			forwardAction("/u");
 		}else{
 			int userId = user.getInt("id");
+			System.out.println("Size: "+getParaMap().size()+getParaMap().toString());
 			int comId = getParaToInt("commodity_id");
 			int quantity = getParaToInt("quantity");
 			double sum = 0;
 			String string="";
 			if((string = getPara("sum") )== null){
 				double price = Double.parseDouble(getPara("price"));
-				 sum = price * quantity;
+				 sum = price * quantity;	//record the total cost of this order
 			}else{
 				sum = Double.parseDouble(string);
 			}
@@ -43,14 +44,15 @@ public class OrderController extends Controller{
 			order.set("user_id",userId);
 			order.set("quantity",quantity);
 			order.set("sum",sum);
-			Timestamp timestamp = new Timestamp(time);
+			order.set("time",new Timestamp(System.currentTimeMillis()));
 			
 			if(order.save()){
 				order = Order.dao.findById(sequence);
 				Commodity commodity = order.getCommodity();
 				setAttr("order",order);
 				setAttr("commodity",commodity);
-				render("confirm.html");
+				
+				render("buy.html");
 			}else {
 				//setAttr("error","");
 				//render("error.html");
@@ -64,6 +66,15 @@ public class OrderController extends Controller{
 	public void confirm(){
 		//update status of order
 		Order.dao.findById(getPara("sequence")).set("status",1).update();
+		
+		//Update repository and sales number
+		int commoId = getParaToInt("commodity_id");
+		int respository = getParaToInt("respository");
+		int quantity = getParaToInt("quantity");
+		int saleNum = getParaToInt("sales_num");
+		
+		Commodity.dao.findById(commoId).set("quantity",respository-quantity).set("sales_num",saleNum+quantity).update();
+		
 		setAttr("msg","下单成功");
 		render("success.html");
 	}
@@ -87,13 +98,23 @@ public class OrderController extends Controller{
 		}else{
 			int id = user.getInt("id");
 			List<Order> list = Order.dao.find("select * from `order` where user_id="+id);
-			List<Record> sales = Db.find("select id,sequence,name,order.quantity,order.sum,order.status,order.time " +
+			List<Record> sales = Db.find("select id,sequence,name,order.quantity as q, order.sum as s," +
+					"order.status as st, order.time as t " +
 					"from `order` join commodity on `order`.commodity_id=commodity.id where owner="+id);
 			
 			setAttr("sales",sales);
-			setAttr("list",list);
+			setAttr("orders",list);
 			render("orders.html");
 		}
 	}
 	
+	public void send(){
+		Order.dao.findById(getPara("seq")).set("status",2).update();
+		forwardAction("/o");
+	}
+	
+	public void delete(){
+		Order.dao.findById(getPara("seq")).delete();
+		forwardAction("/o");
+	}
 }

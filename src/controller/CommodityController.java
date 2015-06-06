@@ -121,7 +121,7 @@ public class CommodityController extends Controller{
 	public void one(){
 		int id = getParaToInt("id");
 		System.out.println(" ID is : "+id);
-		Commodity commo = Commodity.dao.findById(id);
+		Commodity commo = Commodity.dao.findFirst("select * from commodity where id="+id);//.findById(id);
 		System.out.println(commo.toString());
 		setAttr("commodity",commo);
 		render("details.html");
@@ -134,16 +134,56 @@ public class CommodityController extends Controller{
 		
 		List<Commodity> list = Commodity.dao.find("select * from commodity where owner="+id);
 		
-		setAttr("myGoods",list);
+		setAttr("mysale",list);
 		render("mysale.html");
 	}
 	
 	//invalidate commodity 
 	public void down(){
 		int commoId = getParaToInt("id");
-		Commodity.dao.findById(commoId).set("status",0).update();	
+		Commodity commodity = Commodity.dao.findById(commoId);	
 		
-		list();
+		User user = getSessionAttr("user");
+		int id = user.getInt("id");
+		if(id == commodity.getInt("owner")){
+			commodity.set("status",0).update();			
+			forwardAction("/g/list");
+		}else {
+			setAttr("msg","您无权下架此商品！！");
+			render("error.html");
+		}
+	}
+	
+	//upload commodity
+	public void up(){
+		int commoId = getParaToInt("id");
+		Commodity commodity = Commodity.dao.findById(commoId);	
+		
+		User user = getSessionAttr("user");
+		int id = user.getInt("id");
+		if(id == commodity.getInt("owner")){
+			commodity.set("status",1).update();			
+			forwardAction("/g/list");
+		}else {
+			setAttr("msg","您无权上架此商品！！");
+			render("error.html");
+		}
+	}
+	
+	//delete commodity after privilege granted
+	public void delete(){
+		int commoId = getParaToInt("id");
+		Commodity commodity = Commodity.dao.findById(commoId);	
+
+		User user = getSessionAttr("user");
+		int id = user.getInt("id");
+		if(id == commodity.getInt("owner")){
+			commodity.delete();
+			forwardAction("/g/list");
+		}else {
+			setAttr("msg","您无权删除此商品！！");
+			render("error.html");
+		}
 	}
 	
 	//search for sth

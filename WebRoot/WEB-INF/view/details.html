@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
-    <title>details</title>
+    <title>商品详情</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -41,14 +41,45 @@
     <script src="/resources/scripts/axure/legacy.js"></script>
     <script src="/resources/scripts/axure/viewer.js"></script>
     <script type="text/javascript">
-      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
-      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
-      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+      $axure.utils.getTransparentGifPath = function() { return '/resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return '/resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return '/resources/reload.html'; };
     </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$("#u9_input").click(function(){
+    		$("#buyForm").attr("action","/c/add");
+    		$("#buyForm").submit();
+    	});
+    	
+    });
+    
+    </script>
+   	<style type="text/css">
+   		.content{
+   			margin-top:140px;
+   			padding-top : 50px;
+   		}
+   	</style>
   </head>
   <body>
     <div id="base" class="">
-      <div id="u0" class="ax_image">
+      
+      <div class="ax_paragraph">
+        <img  class="img " src="/resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div  class="text">
+          <p style="font-size:32px;text-align:left;"><a id="u4" href="/" class="link"><span style="font-size:32px;color:#0000FF;text-align:left;">大连理工大学校园电子商务系统</span></a><span style="font-size:32px;color:#0000FF;text-align:left;"></span></p><p style="font-size:20px;text-align:right;"><span style="font-size:20px;color:#1E1E1E;text-align:right;">&nbsp;</span></p>
+        </div>
+      </div>
+
+      <div class="ax_horizontal_line">
+        <img id="u5_start" class="img " src="/resources/images/transparent.gif" alt="u5_start"/>
+        <img id="u5_end" class="img " src="/resources/images/transparent.gif" alt="u5_end"/>
+        <img id="u5_line" class="img " src="/images/buy/u26_line.png" alt="u5_line"/>
+      </div>
+    
+      <div id="u0" class="ax_image" class="content">
         <img id="u0_img" class="img " src="/images/${(commodity.image)}"/>
         <div id="u1" class="text">
           <p><span></span></p>
@@ -74,21 +105,23 @@
         </div>
       </div>
 
+	<form action="/o/buy" id="buyForm" method="post">
       <!-- Unnamed (Text Field) -->
       <div id="u7" class="ax_text_field">
          <input type="text" name="quantity" value="1"/>
       </div>
-
-      <!-- Unnamed (HTML Button) -->
+	<input type="hidden" name="commodity_id" value="${commodity.id}"/>
+	<input type="hidden" name="price" value="${commodity.price}"/>
+	
       <div id="u8" class="ax_html_button">
         <input id="u8_input" type="submit" value="立即购买"/>
       </div>
-
-      <!-- Unnamed (HTML Button) -->
+	</form>
+      <!-- Add to cart form -->
       <div id="u9" class="ax_html_button">
-        <input id="u9_input" type="submit" value="加入购物车"/>
+        <input id="u9_input" type="button" value="加入购物车"/>
       </div>
-
+	
       <!-- Unnamed (Shape) -->
       <div id="u10" class="ax_shape">
         <img id="u10_img" class="img " src="/images/details/regen/u5.png"/>
@@ -124,18 +157,6 @@
           <p>${(commodity.introduction)}</p>
         </div>
       </div>
-
-      <!-- Unnamed (Flow Shape) -->
-      <div id="u18" class="ax_flow_shape">
-        <img id="u18_img" class="img " src="/images/details/regen/u18.png"/>
-        <!-- Unnamed () -->
-        <div id="u19" class="text">
-          <input type="submit" value="立即购买">
-        </div>
-      </div>
-
-      <!-- Unnamed (Flow Shape) [reference page] -->
       <div id="u18_ref" class="reference_page"></div>
-    </div>
   </body>
 </html>

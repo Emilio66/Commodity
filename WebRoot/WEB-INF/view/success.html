@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>成功</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
+    <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
+    <link href="data/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/succees/styles.css" type="text/css" rel="stylesheet"/>
+	<script src="/resources/scripts/jquery-1.7.1.min.js"></script>
+	<script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="resources/scripts/axure/axQuery.js"></script>
+    <script src="resources/scripts/axure/globals.js"></script>
+    <script src="resources/scripts/axutils.js"></script>
+    <script src="resources/scripts/axure/annotation.js"></script>
+    <script src="resources/scripts/axure/axQuery.std.js"></script>
+    <script src="resources/scripts/axure/doc.js"></script>
+    <script src="data/document.js"></script>
+    <script src="resources/scripts/messagecenter.js"></script>
+    <script src="resources/scripts/axure/events.js"></script>
+    <script src="resources/scripts/axure/action.js"></script>
+    <script src="resources/scripts/axure/expr.js"></script>
+    <script src="resources/scripts/axure/geometry.js"></script>
+    <script src="resources/scripts/axure/flyout.js"></script>
+    <script src="resources/scripts/axure/ie.js"></script>
+    <script src="resources/scripts/axure/model.js"></script>
+    <script src="resources/scripts/axure/repeater.js"></script>
+    <script src="resources/scripts/axure/sto.js"></script>
+    <script src="resources/scripts/axure/utils.temp.js"></script>
+    <script src="resources/scripts/axure/variables.js"></script>
+    <script src="resources/scripts/axure/drag.js"></script>
+    <script src="resources/scripts/axure/move.js"></script>
+    <script src="resources/scripts/axure/visibility.js"></script>
+    <script src="resources/scripts/axure/style.js"></script>
+    <script src="resources/scripts/axure/adaptive.js"></script>
+    <script src="resources/scripts/axure/tree.js"></script>
+    <script src="resources/scripts/axure/init.temp.js"></script>
+    <script src="/files/succees/data.js"></script>
+    <script type="text/javascript">
+      $axure.utils.getTransparentGifPath = function() { return 'resources/images/transparent.gif'; };
+      $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
+      $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
+    </script>	
+    <script type="text/javascript">
+    var seconds=3;
+    $(document).ready(function(){
+    	
+    	setTimeout("countDown()",1000);
+    });
+    function countDown(){
+    	if(seconds == 0){
+    		window.history.back();
+    	}else{
+    		seconds --;
+    		$("#second").text(seconds);
+    		setTimeout("countDown()",1000);
+    	}
+    }
+    
+    </script>
+  </head>
+  <body>
+    <div id="base" class="">
+
+      <!-- Unnamed (Shape) -->
+      <div id="u2" class="ax_paragraph">
+        <img id="u2_img" class="img " src="/resources/images/transparent.gif"/>
+        <!-- Unnamed () -->
+        <div id="u3" class="text">
+          <p style="font-size:32px;text-align:left;"><a id="u4" href="/" class="link"><span style="font-size:32px;color:#0000FF;text-align:left;">大连理工大学校园电子商务系统</span></a><span style="font-size:32px;color:#0000FF;text-align:left;"></span></p><p style="font-size:20px;text-align:right;"><span style="font-size:20px;color:#1E1E1E;text-align:right;">&nbsp;</span></p>
+        </div>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u5" class="ax_horizontal_line">
+        <img id="u5_start" class="img " src="/resources/images/transparent.gif" alt="u5_start"/>
+        <img id="u5_end" class="img " src="/resources/images/transparent.gif" alt="u5_end"/>
+        <img id="u5_line" class="img " src="/images/buy/u26_line.png" alt="u5_line"/>
+      </div>
+
+      <!-- Unnamed (Horizontal Line) -->
+      <div id="u6" class="ax_horizontal_line">
+        <img id="u6_start" class="img " src="/resources/images/transparent.gif" alt="u6_start"/>
+        <img id="u6_end" class="img " src="/resources/images/transparent.gif" alt="u6_end"/>
+        <img id="u6_line" class="img " src="/images/buy/u26_line.png" alt="u6_line"/>
+      </div>
+
+      <!-- Unnamed (Shape) -->
+      <div id="u7" class="ax_shape">
+        <img id="u7_img" class="img " src="/images/buy/u28.png"/>
+        <!-- Unnamed () -->
+        <div id="u8" class="text">
+          <p><span></span></p>
+        </div>
+      </div>
+	  
+<center>
+	<div >
+	<h2>${msg}</h2>
+	<h2 id="second">3</h2>
+	<h2>秒返回</h2>
+	</div>
+</center>	  
+    </div>
+  </body>
+</html>
